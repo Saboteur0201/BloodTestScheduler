@@ -7,6 +7,8 @@ package bloodtestscheduler;
 public class BTS {
     public static void main(String[] args) {
       
+        System.out.println("Starting..");
+        GUI gui = new GUI();
     }
-    // test comment to check if git commit works
+    
 }
