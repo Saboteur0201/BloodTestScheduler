@@ -16,6 +16,7 @@ public abstract class Person {
         this.priority = priority;
     }
 
+    // Setters and Getters
     public void setName(String name) {
         this.name = name;
     }
@@ -39,5 +40,6 @@ public abstract class Person {
     public String getPriority() {
         return priority;
     }
+    
     
 }

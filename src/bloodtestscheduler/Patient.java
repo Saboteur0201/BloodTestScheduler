@@ -36,11 +36,20 @@ implements Comparable<Patient> // Automatically orders patients on the basis of 
     }
     
     private int getPriorityValue(String priority) {
+        
         switch (priority.toLowerCase()) {
-            case "urgent": return 3;
-            case "medium": return 2;
-            case "low": return 1;
-            default: return 0;
+            
+            case "urgent": 
+                return 3;
+                
+            case "medium": 
+                return 2;
+                
+            case "low":
+                return 1;
+                
+            default: 
+                return 0;
         }
     }
 
