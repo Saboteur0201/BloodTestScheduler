@@ -1,4 +1,5 @@
 package bloodtestscheduler;
+
 import java.util.PriorityQueue;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -9,15 +10,18 @@ import java.util.Queue;
  */
 
 public class Patient extends Person implements Comparable<Patient> { // Automatically orders patients on the basis of urgency, age, and hospital status
-    private boolean fromHospital;
-
-    private static PriorityQueue<Patient> queue = new PriorityQueue<>();
-    private static Queue<Patient> noShowList = new LinkedList<>();
     
-    public Patient(boolean fromHospital, String name, int age, String priority) {
+    private boolean fromHospital;
+    private String assignedGP;
+    
+    public static PriorityQueue<Patient> queue = new PriorityQueue<>();
+    public static Queue<Patient> noShowList = new LinkedList<>();
+
+    public Patient(boolean fromHospital, String name, int age, String priority, String assignedGP) {
         super(name, age, priority);
         this.fromHospital = fromHospital;
-    }       
+        this.assignedGP = assignedGP;
+    }
     
     public boolean isFromHospital() {
         return fromHospital;
@@ -38,6 +42,7 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
         return 0;
     }
     
+    // using integer for easy priority comparision
     private int getPriorityValue(String priority) {
         switch (priority.toLowerCase()) {        
             case "urgent": 
@@ -50,7 +55,7 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
                 return 1;
                 
             default: 
-                return 0;
+                return 0; 
         }
     }
 
@@ -60,6 +65,10 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
 
     public static Patient getNextPatient() {
         return queue.poll(); // pick the highest priority patient
+    }
+    
+     public String getAssignedGP() {
+        return assignedGP;
     }
 
     public static void markNoShow(Patient p) {
@@ -71,6 +80,6 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
 
     @Override
     public String toString() {
-        return name + " (" + priority + ", Age: " + age + ", Hospital: " + fromHospital + ")";
+        return name + " (" + priority + ", Age: " + age + ", Hospital: " + fromHospital + ", GP: " + assignedGP + ")"; // return in this order
     }
 }

@@ -103,6 +103,7 @@ public class GUI extends javax.swing.JFrame {
         priorityLabel.setText("Priority:");
 
         priorityList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Urgent", "Medium", "Low" }));
+        priorityList.setSelectedIndex(2);
         priorityList.setToolTipText("");
         priorityList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,7 +171,7 @@ public class GUI extends javax.swing.JFrame {
 
         GPLabel.setText("Assign GP:");
 
-        gpList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dr. Smith", "Dr. Johnson", "Dr.Lee", "Dr.Patel", "Dr.Adams" }));
+        gpList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- None -", "Dr. Smith", "Dr. Johnson", "Dr.Lee", "Dr.Patel", "Dr.Adams" }));
 
         quitBTN.setText("Quit This App");
         quitBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +316,7 @@ public class GUI extends javax.swing.JFrame {
         // clear input fields after addition
         nameField.setText("");
         ageField.setText("");
-        priorityList.setSelectedIndex(0);
+        priorityList.setSelectedIndex(2);
         gpList.setSelectedIndex(0);
         patientCheck.setSelected(false); // uncheck the box
     }//GEN-LAST:event_addBTNActionPerformed
@@ -350,12 +351,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_priorityListActionPerformed
 
     private void quitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitBTNActionPerformed
-        System.exit(0);
+        System.exit(0); // quit the app
     }//GEN-LAST:event_quitBTNActionPerformed
 
     private void clearBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBTNActionPerformed
         Patient.queue.clear();
-        updateQueueTable();
+        updateQueueTable(); // clear entire table
     }//GEN-LAST:event_clearBTNActionPerformed
 
     /**

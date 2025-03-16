@@ -6,17 +6,19 @@ package bloodtestscheduler;
  */
 
 public abstract class Person {
-    protected String name;
-    protected int age;
-    protected String priority;
+    
+    protected String name; // initialising variables
+    protected int age; // initialising variables
+    protected String priority; // initialising variables
 
+    // Constructors
     public Person(String name, int age, String priority) {
         this.name = name;
         this.age = age;
         this.priority = priority;
     }
 
-    // Setters and Getters
+    // Setters and Getters 
     public void setName(String name) {
         this.name = name;
     }
@@ -40,6 +42,5 @@ public abstract class Person {
     public String getPriority() {
         return priority;
     }
-    
-    
+     
 }
