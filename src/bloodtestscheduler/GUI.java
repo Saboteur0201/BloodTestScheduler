@@ -17,7 +17,7 @@ public class GUI extends javax.swing.JFrame {
         javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) queueTable.getModel();
         model.setRowCount(0);
         
-        // loop thru elements and add to table
+        // loop thru the patietns queue and add them to the table
         for (Patient p : Patient.queue) { // Directly using staic queue 
                 model.addRow(new Object[]{p.getName(),p.getGender(), p.getAge(), p.getPriority(), p.isFromHospital() ? "Yes" : "No", p.getAssignedGP()});
                 
@@ -29,7 +29,7 @@ public class GUI extends javax.swing.JFrame {
         
         // looping through no show list
         for (Patient p : Patient.noShowList) {
-            noShowText += p.getName() + "\n";
+            noShowText += p.getName() + "\n"; // append each name to the text
         }
         
         JOptionPane.showMessageDialog(this, noShowText, "No-Show List", JOptionPane.INFORMATION_MESSAGE); // pop-up this message
@@ -356,36 +356,36 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_nameFieldActionPerformed
 
     private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
-        String name = nameField.getText();
-        int age;
+        String name = nameField.getText(); // retrieves the name from input field
+        int age; // gets the age from input field
         
-        try { // age validaiton and parsing
-            age = Integer.parseInt(ageField.getText());
-        } catch (NumberFormatException e) {
+        try { // this checks if the age entered is valid 
+            age = Integer.parseInt(ageField.getText()); // converting the age from a string to an integer
+        } catch (NumberFormatException e) { // if the input is anything other than an integer/number
             JOptionPane.showMessageDialog(this, "Invalid age. Please enter a number.");
             return;
         }
         
         
-        for (Patient p : Patient.queue) {
-            if (p.getName().equalsIgnoreCase(name)) {
+        for (Patient p : Patient.queue) { // looping throught the queue to check if this patient exists or not
+            if (p.getName().equalsIgnoreCase(name)) { // ignoring the case for better comparision
                 JOptionPane.showMessageDialog(this, "This patient is already in the queue.");
                 return;
             }
         }
         
-        String gender = (String) genderList.getSelectedItem();
+        String gender = (String) genderList.getSelectedItem(); // gets the gender of the person
         String priority = (String) priorityList.getSelectedItem();// get priorty from dropdown
         boolean fromHospital = patientCheck.isSelected(); // checkbox status
-        String assignedGP = (String) gpList.getSelectedItem(); 
+        String assignedGP = (String) gpList.getSelectedItem(); // retreives the assigned GP
 
-        Patient.addPatient(new Patient(fromHospital, name, age, priority, gender, assignedGP));
-        updateQueueTable(); // add to table
+        Patient.addPatient(new Patient(fromHospital, name, age, priority, gender, assignedGP)); // creating the patient object and add them to the table
+        updateQueueTable(); // refreshing the table to show the addition made, live
         
         // clear input fields after addition
         nameField.setText("");
         ageField.setText("");
-        genderList.setSelectedIndex(0);
+        genderList.setSelectedIndex(0); // resetting the dropdowns
         priorityList.setSelectedIndex(2);
         gpList.setSelectedIndex(0);
         patientCheck.setSelected(false); // uncheck the box
@@ -393,24 +393,24 @@ public class GUI extends javax.swing.JFrame {
 
     private void nextBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBTNActionPerformed
         Patient next = Patient.getNextPatient(); //get next patient from queue
-        if (next == null) {
-            JOptionPane.showMessageDialog(this, "No patients in queue."); // if table is empty
+        if (next == null) { // to check if the queue is empty
+            JOptionPane.showMessageDialog(this, "No patients in queue."); // if true then show it is empty
         }
         
-        int choice = JOptionPane.showConfirmDialog(this,
+        int choice = JOptionPane.showConfirmDialog(this, // ask the user if they want to either confirm processing or mark the patient as a no show
             "Now Processing: " + next.getName() + "\nPriority: " + next.getPriority() + "\nGP: " + next.getAssignedGP() + "\n\nMark as No-Show?",
             "Confirm or No-Show?",
-            JOptionPane.YES_NO_OPTION
+            JOptionPane.YES_NO_OPTION // a simple yes or no option
         );
         
-        if (choice == JOptionPane.YES_OPTION) {
+        if (choice == JOptionPane.YES_OPTION) { // if its a no show, then the patient is added to the no show list
             Patient.markNoShow(next); // Mark as no-show
             JOptionPane.showMessageDialog(this, next.getName() + " marked as no-show.");
-        } else {
+        } else { // else, confirms with the processing
             JOptionPane.showMessageDialog(this, next.getName() + " has been processed.");
         }
 
-        updateQueueTable();
+        updateQueueTable(); // updating table to reflect the processing
     }//GEN-LAST:event_nextBTNActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -432,7 +432,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void clearBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBTNActionPerformed
         Patient.queue.clear();
-        updateQueueTable(); // clear entire table
+        updateQueueTable(); // clear entire table, to restart or test purposes
     }//GEN-LAST:event_clearBTNActionPerformed
 
     private void genderListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderListActionPerformed
@@ -440,7 +440,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_genderListActionPerformed
 
     private void gpBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gpBTNActionPerformed
-        showGPDetails();
+        showGPDetails(); // shows the details of all the GPs
     }//GEN-LAST:event_gpBTNActionPerformed
 
     private void helpBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBTNActionPerformed

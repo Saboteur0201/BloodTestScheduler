@@ -18,7 +18,7 @@ public class GP extends Person { // GP class extends Person
     
     // Constructor 
     public GP(String name, int age, String gender, String specialization) {
-        super(name, age, gender); 
+        super(name, age, gender); // initially I had this set to "N/A" to get it working, now that it functions I have moved the priorty attribute to another class
         this.specialization = specialization;
     }
 

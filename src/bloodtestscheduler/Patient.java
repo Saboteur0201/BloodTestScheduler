@@ -15,8 +15,8 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
     private String assignedGP; // assigned GP to patient
     private String priority;
     
-    public static PriorityQueue<Patient> queue = new PriorityQueue<>();
-    public static Queue<Patient> noShowList = new LinkedList<>();
+    public static PriorityQueue<Patient> queue = new PriorityQueue<>(); // used a priority queue to store all patients and sorted by urgency and age
+    public static Queue<Patient> noShowList = new LinkedList<>();  // i used the linked list to store the list of no-show patients 
 
     public Patient(boolean fromHospital, String name, int age, String priority,String gender, String assignedGP) {
         super(name, age,gender);
@@ -38,18 +38,18 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
     }
     
     @Override
-    public int compareTo(Patient other) {
+    public int compareTo(Patient other) { // compares the patients to determine who should be processed first
         // priority order -> urgent > medium > low
         int priorityOrder = getPriorityValue(this.priority) - getPriorityValue(other.priority);
-        int ageOrder = other.age - this.age;
+        int ageOrder = other.age - this.age; // if priorty is same, it checks the age. this makes it so that the elderly patients come first
         if (priorityOrder != 0) return -priorityOrder; 
         if (ageOrder != 0) return ageOrder;
 
-        // giving hospital patients priority
+        // if both age and priority are the same, then hospital patients are given the next preference
         if (this.fromHospital && !other.fromHospital) return -1;
         if (!this.fromHospital && other.fromHospital) return 1;
 
-        return 0;
+        return 0; // if all criteria is the same
     }
     
     // using integer for easy priority comparision
@@ -65,16 +65,16 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
                 return 1;
                 
             default: 
-                return 0; 
+                return 0; // should not happen, but if the field is empty then this would be returned
         }
     }
 
     public static void addPatient(Patient p) {
-        queue.add(p); // add a patient to queue
+        queue.add(p); // add a patient to the priortu queue
     }
 
     public static Patient getNextPatient() {
-        return queue.poll(); // pick the highest priority patient
+        return queue.poll(); // pick the highest/next priority patient to be processed, and remove from the list
     }
     
      public String getAssignedGP() {
