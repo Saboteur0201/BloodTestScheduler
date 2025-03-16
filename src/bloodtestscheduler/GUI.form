@@ -60,53 +60,58 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="GPLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="title" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                      <Component id="patientCheckLabel" min="-2" pref="113" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="genderLabel" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="GPLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="title" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="142" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="genderList" pref="117" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="priorityLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                      <Component id="priorityList" pref="117" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="patientCheckLabel" min="-2" pref="113" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="quitBTN" min="-2" pref="145" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="clearBTN" min="-2" pref="145" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="queueScrollPane" pref="0" max="32767" attributes="0"/>
+                  <Component id="queueScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
                   <Component id="seperator" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="noShowBTN" min="-2" pref="199" max="-2" attributes="0"/>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
-                      <Component id="nextBTN" min="-2" pref="199" max="-2" attributes="0"/>
+                      <Component id="addBTN" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="noShowBTN" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="nextBTN" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="priorityLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="priorityList" pref="120" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="nameLabel" pref="44" max="32767" attributes="0"/>
-                                  <Component id="ageLabel" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="nameField" pref="120" max="32767" attributes="0"/>
-                                  <Component id="ageField" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="nameLabel" pref="44" max="32767" attributes="0"/>
+                          <Component id="ageLabel" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="nameField" pref="120" max="32767" attributes="0"/>
+                          <Component id="ageField" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -116,10 +121,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="patientCheck" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="addBTN" alignment="1" min="-2" pref="202" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="patientCheck" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -134,39 +136,39 @@
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="title" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="GPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gpList" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="priorityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="priorityList" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ageLabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="ageField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="patientCheckLabel" alignment="3" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="nameField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="GPLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="gpList" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ageLabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
-                              <Component id="ageField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="patientCheckLabel" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="patientCheck" min="-2" pref="25" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="addBTN" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="patientCheck" min="-2" pref="25" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="priorityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="priorityList" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="genderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="genderList" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="seperator" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nextBTN" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="noShowBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="nextBTN" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="noShowBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="addBTN" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="queueScrollPane" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -275,7 +277,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" id="red" palette="1" red="ff" type="palette"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Mark No-Show"/>
+        <Property name="text" type="java.lang.String" value="Mark a No-Show"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="noShowBTNActionPerformed"/>
@@ -291,8 +293,9 @@
         <Component class="javax.swing.JTable" name="queueTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="5" rowCount="4">
+              <Table columnCount="6" rowCount="4">
                 <Column editable="true" title="Name" type="java.lang.Object"/>
+                <Column editable="true" title="Gender" type="java.lang.Object"/>
                 <Column editable="true" title="Age" type="java.lang.Object"/>
                 <Column editable="true" title="Priority" type="java.lang.Object"/>
                 <Column editable="true" title="Hospital" type="java.lang.Object"/>
@@ -301,6 +304,11 @@
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -372,6 +380,30 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearBTNActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="genderLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gender:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="genderList">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="-Select -"/>
+            <StringItem index="1" value="Male"/>
+            <StringItem index="2" value="Female"/>
+            <StringItem index="3" value="Other"/>
+          </StringArray>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="genderListActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

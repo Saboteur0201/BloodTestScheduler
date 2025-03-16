@@ -11,14 +11,14 @@ import java.util.Queue;
 
 public class Patient extends Person implements Comparable<Patient> { // Automatically orders patients on the basis of urgency, age, and hospital status
     
-    private boolean fromHospital;
-    private String assignedGP;
+    private boolean fromHospital; // check if patient is from hospital
+    private String assignedGP; // assigned GP to patient
     
     public static PriorityQueue<Patient> queue = new PriorityQueue<>();
     public static Queue<Patient> noShowList = new LinkedList<>();
 
-    public Patient(boolean fromHospital, String name, int age, String priority, String assignedGP) {
-        super(name, age, priority);
+    public Patient(boolean fromHospital, String name, int age, String priority,String gender, String assignedGP) {
+        super(name, age, priority,gender);
         this.fromHospital = fromHospital;
         this.assignedGP = assignedGP;
     }
@@ -80,6 +80,6 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
 
     @Override
     public String toString() {
-        return name + " (" + priority + ", Age: " + age + ", Hospital: " + fromHospital + ", GP: " + assignedGP + ")"; // return in this order
+        return name + " (" + gender + "," + priority + ", Age: " + age + ", Hospital: " + fromHospital + ", GP: " + assignedGP + ")"; // return in this order
     }
 }
