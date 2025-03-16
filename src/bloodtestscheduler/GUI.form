@@ -411,6 +411,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="List GP Details"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gpBTNActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -34,6 +34,23 @@ public class GUI extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(this, noShowText, "No-Show List", JOptionPane.INFORMATION_MESSAGE); // pop-up this message
     }
+
+    private void showGPDetails() { 
+        GP[] gpList = GP.getGPList(); // Retrieve the GP list 
+        String gpDetails = "List of General Practitioners:\n\n";
+
+        // Loop through GP list
+        for (GP gp : gpList) {
+            gpDetails += "Name: " + gp.getName() + "\n";
+            gpDetails += "Age: " + gp.getAge() + "\n";
+            gpDetails += "Gender: " + gp.getGender() + "\n";
+            gpDetails += "Specialization: " + gp.getSpecialization() + "\n";
+            gpDetails += "----------------------------\n";
+        }
+
+        // Display the GP details in a pop-up 
+        JOptionPane.showMessageDialog(this, gpDetails, "GP Details", JOptionPane.INFORMATION_MESSAGE);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -202,6 +219,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         gpBTN.setText("List GP Details");
+        gpBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gpBTNActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -392,6 +414,10 @@ public class GUI extends javax.swing.JFrame {
     private void genderListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderListActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_genderListActionPerformed
+
+    private void gpBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gpBTNActionPerformed
+        showGPDetails();
+    }//GEN-LAST:event_gpBTNActionPerformed
 
     /**
      * @param args the command line arguments
