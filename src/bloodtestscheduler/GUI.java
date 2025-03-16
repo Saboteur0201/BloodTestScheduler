@@ -341,13 +341,14 @@ public class GUI extends javax.swing.JFrame {
     private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
         String name = nameField.getText();
         int age;
-
+        
         try { // age validaiton and parsing
             age = Integer.parseInt(ageField.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Invalid age. Please enter a number.");
             return;
         }
+        
         
         for (Patient p : Patient.queue) {
             if (p.getName().equalsIgnoreCase(name)) {
@@ -375,11 +376,23 @@ public class GUI extends javax.swing.JFrame {
 
     private void nextBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBTNActionPerformed
         Patient next = Patient.getNextPatient(); //get next patient from queue
-        if (next != null) {
-            JOptionPane.showMessageDialog(this, "Processing: " + next.getName() + next.getPriority() + next.getAssignedGP() ); 
-        } else {
+        if (next == null) {
             JOptionPane.showMessageDialog(this, "No patients in queue."); // if table is empty
         }
+        
+        int choice = JOptionPane.showConfirmDialog(this,
+            "Processing: " + next.getName() + "\nPriority: " + next.getPriority() + "\nGP: " + next.getAssignedGP() + "\n\nMark as No-Show?",
+            "Confirm or No-Show?",
+            JOptionPane.YES_NO_OPTION
+        );
+        
+        if (choice == JOptionPane.YES_OPTION) {
+            Patient.markNoShow(next); // Mark as no-show
+            JOptionPane.showMessageDialog(this, next.getName() + " marked as no-show.");
+        } else {
+            JOptionPane.showMessageDialog(this, next.getName() + " has been processed.");
+        }
+
         updateQueueTable();
     }//GEN-LAST:event_nextBTNActionPerformed
 
@@ -388,14 +401,17 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void noShowBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noShowBTNActionPerformed
-        String name = JOptionPane.showInputDialog(this, "Enter name of no-show:");
+        // Show the no-show list
+        showNoShowList();
+        
+        // Add a now show
+        String name = JOptionPane.showInputDialog(this, "Enter name of the no-show patient: \n(Click cancel button to skip/close)");
         if (name != null && !name.isEmpty()) {
             Patient.markNoShow(new Patient(false, name, 0, "Low","Other", "None")); // Assign default GP
             JOptionPane.showMessageDialog(this, name + " marked as no-show.");
         }
 
-        // Show the no-show list after marking one
-        showNoShowList();
+        
     }//GEN-LAST:event_noShowBTNActionPerformed
 
     private void priorityListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityListActionPerformed
