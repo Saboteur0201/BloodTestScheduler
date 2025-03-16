@@ -87,6 +87,7 @@ public class GUI extends javax.swing.JFrame {
         genderLabel = new javax.swing.JLabel();
         genderList = new javax.swing.JComboBox<>();
         gpBTN = new javax.swing.JToggleButton();
+        helpBTN = new javax.swing.JToggleButton();
 
         jLabel4.setText("Priority:");
 
@@ -113,7 +114,7 @@ public class GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        title.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        title.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         title.setText("Blood Test Scheduler");
         title.setSize(new java.awt.Dimension(60, 50));
 
@@ -170,7 +171,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         noShowBTN.setBackground(java.awt.Color.red);
-        noShowBTN.setText("Mark a No-Show");
+        noShowBTN.setText("No-Shows");
         noShowBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noShowBTNActionPerformed(evt);
@@ -194,14 +195,14 @@ public class GUI extends javax.swing.JFrame {
 
         gpList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- None -", "Dr. Smith", "Dr. Johnson", "Dr.Lee", "Dr.Patel", "Dr.Adams" }));
 
-        quitBTN.setText("Quit This App");
+        quitBTN.setText("Quit");
         quitBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quitBTNActionPerformed(evt);
             }
         });
 
-        clearBTN.setText("Clear Entire Table");
+        clearBTN.setText("Clear Patient Queue");
         clearBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearBTNActionPerformed(evt);
@@ -218,10 +219,17 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        gpBTN.setText("List GP Details");
+        gpBTN.setText("Show GP Details");
         gpBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gpBTNActionPerformed(evt);
+            }
+        });
+
+        helpBTN.setText("Help");
+        helpBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBTNActionPerformed(evt);
             }
         });
 
@@ -229,21 +237,17 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(quitBTN)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(title)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(quitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, Short.MAX_VALUE)
                                 .addComponent(gpBTN)
-                                .addGap(18, 18, 18)
-                                .addComponent(clearBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(clearBTN))
                             .addComponent(queueScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(addBTN)
@@ -265,7 +269,7 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(GPLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(gpList, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(priorityLabel)
@@ -276,18 +280,26 @@ public class GUI extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(patientCheck))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(genderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(genderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                                         .addGap(24, 24, 24)
                                         .addComponent(genderList, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(seperator))
-                        .addGap(75, 75, 75))))
+                        .addGap(75, 75, 75))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(helpBTN)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(title)
+                .addGap(168, 168, 168))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(title)
                 .addGap(39, 39, 39)
+                .addComponent(title)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameLabel)
                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,9 +330,14 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(queueScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quitBTN)
                     .addComponent(clearBTN)
                     .addComponent(gpBTN)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(quitBTN)
+                    .addComponent(helpBTN))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -381,7 +398,7 @@ public class GUI extends javax.swing.JFrame {
         }
         
         int choice = JOptionPane.showConfirmDialog(this,
-            "Processing: " + next.getName() + "\nPriority: " + next.getPriority() + "\nGP: " + next.getAssignedGP() + "\n\nMark as No-Show?",
+            "Now Processing: " + next.getName() + "\nPriority: " + next.getPriority() + "\nGP: " + next.getAssignedGP() + "\n\nMark as No-Show?",
             "Confirm or No-Show?",
             JOptionPane.YES_NO_OPTION
         );
@@ -403,15 +420,6 @@ public class GUI extends javax.swing.JFrame {
     private void noShowBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noShowBTNActionPerformed
         // Show the no-show list
         showNoShowList();
-        
-        // Add a now show
-        String name = JOptionPane.showInputDialog(this, "Enter name of the no-show patient: \n(Click cancel button to skip/close)");
-        if (name != null && !name.isEmpty()) {
-            Patient.markNoShow(new Patient(false, name, 0, "Low","Other", "None")); // Assign default GP
-            JOptionPane.showMessageDialog(this, name + " marked as no-show.");
-        }
-
-        
     }//GEN-LAST:event_noShowBTNActionPerformed
 
     private void priorityListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityListActionPerformed
@@ -434,6 +442,10 @@ public class GUI extends javax.swing.JFrame {
     private void gpBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gpBTNActionPerformed
         showGPDetails();
     }//GEN-LAST:event_gpBTNActionPerformed
+
+    private void helpBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBTNActionPerformed
+        Help.showHelp();
+    }//GEN-LAST:event_helpBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -474,6 +486,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> genderList;
     private javax.swing.JToggleButton gpBTN;
     private javax.swing.JComboBox<String> gpList;
+    private javax.swing.JToggleButton helpBTN;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;

@@ -4,6 +4,7 @@ package bloodtestscheduler;
  *
  * @author saboteur
  */
+
 public class GP extends Person { // GP class extends Person 
     
     private String specialization; // GP specialization
