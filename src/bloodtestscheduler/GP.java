@@ -18,7 +18,7 @@ public class GP extends Person { // GP class extends Person
     
     // Constructor 
     public GP(String name, int age, String gender, String specialization) {
-        super(name, age, "N/A", gender); // GP does not need priority field
+        super(name, age, gender); 
         this.specialization = specialization;
     }
 

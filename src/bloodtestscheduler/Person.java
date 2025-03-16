@@ -5,18 +5,17 @@ package bloodtestscheduler;
  * @author saboteur
  */
 
-public abstract class Person {
+public abstract class Person { // this is an abstract class to represent a base class for patient and gp class
     
-    protected String name; // initialising variables
-    protected int age; // initialising variables
-    protected String priority; // initialising variables
-    protected String gender;
-
+    // initializing variables, stores the person's name, age, gender
+    protected String name; 
+    protected int age;
+    protected String gender; 
+   
     // Constructors
-    public Person(String name, int age, String priority, String gender) {
+    public Person(String name, int age, String gender) {
         this.name = name;
         this.age = age;
-        this.priority = priority;
         this.gender = gender;
         
     }
@@ -30,10 +29,6 @@ public abstract class Person {
         this.age = age;
     }
     
-    public void setPriority(String priority) {
-        this.priority = priority;
-    }
-
     public void setGender(String gender) {
         this.gender = gender;
     }
@@ -46,10 +41,6 @@ public abstract class Person {
         return age;
     }
 
-    public String getPriority() {
-        return priority;
-    }
-    
     public String getGender() {
         return gender;
     }

@@ -13,18 +13,28 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
     
     private boolean fromHospital; // check if patient is from hospital
     private String assignedGP; // assigned GP to patient
+    private String priority;
     
     public static PriorityQueue<Patient> queue = new PriorityQueue<>();
     public static Queue<Patient> noShowList = new LinkedList<>();
 
     public Patient(boolean fromHospital, String name, int age, String priority,String gender, String assignedGP) {
-        super(name, age, priority,gender);
+        super(name, age,gender);
+        this.priority = priority;
         this.fromHospital = fromHospital;
         this.assignedGP = assignedGP;
     }
     
     public boolean isFromHospital() {
         return fromHospital;
+    }
+    
+    public String getPriority() { // Getter for priority
+        return priority;
+    }
+
+    public void setPriority(String priority) { // Setter for priority
+        this.priority = priority;
     }
     
     @Override
