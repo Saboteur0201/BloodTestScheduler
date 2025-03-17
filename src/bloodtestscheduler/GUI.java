@@ -105,7 +105,6 @@ public class GUI extends javax.swing.JFrame {
         priorityLabel = new javax.swing.JLabel();
         priorityList = new javax.swing.JComboBox<>();
         nameField = new javax.swing.JTextField();
-        ageField = new javax.swing.JTextField();
         patientCheckLabel = new javax.swing.JLabel();
         patientCheck = new javax.swing.JCheckBox();
         seperator = new javax.swing.JSeparator();
@@ -122,6 +121,7 @@ public class GUI extends javax.swing.JFrame {
         genderList = new javax.swing.JComboBox<>();
         gpBTN = new javax.swing.JToggleButton();
         helpBTN = new javax.swing.JToggleButton();
+        ageSpinner = new javax.swing.JSpinner();
 
         jLabel4.setText("Priority:");
 
@@ -177,12 +177,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        ageField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ageFieldActionPerformed(evt);
-            }
-        });
-
         patientCheckLabel.setText("From a Hospital Ward?");
 
         patientCheck.addActionListener(new java.awt.event.ActionListener() {
@@ -223,7 +217,16 @@ public class GUI extends javax.swing.JFrame {
             new String [] {
                 "Name", "Gender", "Age", "Priority", "Hospital", "GP Assigned"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        queueTable.getTableHeader().setReorderingAllowed(false);
         queueScrollPane.setViewportView(queueTable);
 
         GPLabel.setText("Assign GP:");
@@ -272,10 +275,6 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(title)
-                .addGap(168, 168, 168))
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -287,7 +286,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(gpBTN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(clearBTN))
-                    .addComponent(queueScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                    .addComponent(queueScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addBTN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -296,61 +295,63 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(noShowBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(seperator)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(ageField, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                    .addComponent(nameField)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(GPLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gpList, 0, 1, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(GPLabel)
+                                    .addComponent(genderLabel))
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(genderList, 0, 153, Short.MAX_VALUE)
+                                    .addComponent(gpList, 0, 1, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nameLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(patientCheckLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(patientCheck))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(priorityLabel)
-                                    .addComponent(genderLabel))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(priorityList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(genderList, 0, 144, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(44, 44, 44))
+                                    .addComponent(ageLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(priorityList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ageSpinner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addComponent(title)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(45, 45, 45)
                         .addComponent(title)
-                        .addGap(36, 36, 36)
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nameLabel)
                             .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(genderLabel)
-                            .addComponent(genderList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(priorityLabel)
-                            .addComponent(priorityList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(ageSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(quitBTN)
                             .addComponent(helpBTN))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(priorityLabel)
+                    .addComponent(priorityList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(genderList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(genderLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(patientCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,7 +361,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(gpList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(seperator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(noShowBTN)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -381,10 +382,6 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_patientCheckActionPerformed
 
-    private void ageFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ageFieldActionPerformed
-
     private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nameFieldActionPerformed
@@ -395,23 +392,26 @@ public class GUI extends javax.swing.JFrame {
         String priority = (String) priorityList.getSelectedItem();// get priorty from dropdown
         boolean fromHospital = patientCheck.isSelected(); // checkbox status
         String assignedGP = (String) gpList.getSelectedItem(); // retreives the assigned GP
+        int age = (int) ageSpinner.getValue(); // since it now directly gets a number, parsing is no longer required
         
-        // checks if name field is empt
+        // checks if name field is empty
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a name.");
             return;
         }
-        if (genderList.getSelectedIndex() == 0){
+        
+        if (age == 00) { // checking if age is not 0
+            JOptionPane.showMessageDialog(this, "Please enter a valid age.");
+            return;
+        }
+        if (genderList.getSelectedIndex() == 0){ // checking if gender field is empty
             JOptionPane.showMessageDialog(this, "Please select a gender (Male, Female or Other)");
+            return;
         }
         
-        int age; // gets the age from input field
-        try { // this checks if the age entered is valid 
-            age = Integer.parseInt(ageField.getText()); // converting the age from a string to an integer
-        } catch (NumberFormatException e) { // if the input is anything other than an integer/number
-            JOptionPane.showMessageDialog(this, "Invalid age. Please enter a number.");
-            return;
-        }       
+        if (assignedGP.equals("- None -")) { // doesn't warn the user, this is rather to make the queue table look more organized
+            assignedGP = "None"; 
+        }
         
         for (Patient p : Patient.queue) { // looping throught the queue to check if this patient exists or not
             if (p.getName().equalsIgnoreCase(name) && 
@@ -431,7 +431,7 @@ public class GUI extends javax.swing.JFrame {
         
         // clear input fields after addition
         nameField.setText("");
-        ageField.setText("");
+        ageSpinner.setValue(age);
         genderList.setSelectedIndex(0); // resetting the dropdowns
         priorityList.setSelectedIndex(2);
         gpList.setSelectedIndex(0);
@@ -508,8 +508,8 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel GPLabel;
     private javax.swing.JButton addBTN;
-    private javax.swing.JTextField ageField;
     private javax.swing.JLabel ageLabel;
+    private javax.swing.JSpinner ageSpinner;
     private javax.swing.JToggleButton clearBTN;
     private javax.swing.JLabel genderLabel;
     private javax.swing.JComboBox<String> genderList;

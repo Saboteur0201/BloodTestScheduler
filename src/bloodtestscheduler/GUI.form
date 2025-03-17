@@ -75,11 +75,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="title" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -93,7 +88,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="clearBTN" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="queueScrollPane" alignment="0" pref="499" max="32767" attributes="0"/>
+                  <Component id="queueScrollPane" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="addBTN" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -103,48 +98,51 @@
                   </Group>
                   <Component id="seperator" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="nameLabel" max="32767" attributes="0"/>
-                                  <Component id="ageLabel" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="GPLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="genderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="ageField" pref="179" max="32767" attributes="0"/>
-                                  <Component id="nameField" max="32767" attributes="0"/>
+                                  <Component id="genderList" pref="153" max="32767" attributes="0"/>
+                                  <Component id="gpList" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="GPLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="gpList" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="nameField" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace pref="23" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Component id="patientCheckLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="patientCheck" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="priorityLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="priorityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="priorityList" max="32767" attributes="0"/>
-                                  <Component id="genderList" pref="144" max="32767" attributes="0"/>
+                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="priorityList" alignment="1" min="-2" pref="144" max="-2" attributes="0"/>
+                                  <Component id="ageSpinner" alignment="1" min="-2" pref="144" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
+              <Component id="title" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -153,21 +151,14 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Component id="title" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="nameField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="genderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="genderList" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="ageLabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
-                          <Component id="ageField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="priorityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="priorityList" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ageSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -177,6 +168,13 @@
                           <Component id="helpBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+              </Group>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="priorityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="priorityList" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="genderList" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="genderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -189,7 +187,7 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="seperator" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="32767" attributes="0"/>
+              <EmptySpace type="separate" pref="24" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="noShowBTN" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -259,11 +257,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameFieldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="ageField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ageFieldActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="patientCheckLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="From a Hospital Ward?"/>
@@ -323,7 +316,7 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="0">
-                <Column editable="true" title="Name" type="java.lang.Object"/>
+                <Column editable="true" title="Name" type="java.lang.String"/>
                 <Column editable="true" title="Gender" type="java.lang.Object"/>
                 <Column editable="true" title="Age" type="java.lang.Object"/>
                 <Column editable="true" title="Priority" type="java.lang.Object"/>
@@ -366,7 +359,7 @@
               </TableColumnModel>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
             </Property>
           </Properties>
         </Component>
@@ -449,6 +442,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="helpBTNActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="ageSpinner">
     </Component>
   </SubComponents>
 </Form>
