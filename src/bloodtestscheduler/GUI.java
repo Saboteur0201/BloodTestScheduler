@@ -53,6 +53,29 @@ public class GUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, gpDetails, "GP Details", JOptionPane.INFORMATION_MESSAGE);
     }
     
+    private void processNextPatient() {
+        Patient next = Patient.getNextPatient(); //get next patient from queue
+        
+        if (next == null) { // to check if the queue is empty
+            JOptionPane.showMessageDialog(this, "No patients in queue."); // if true then show it is empty
+        }
+        
+        int choice = JOptionPane.showConfirmDialog(this, // ask the user if they want to either confirm processing or mark the patient as a no show
+            "Now Processing: " + next.getName() + "\nPriority: " + next.getPriority() + "\nGP: " + next.getAssignedGP() + "\n\nMark as No-Show?",
+            "Confirm or No-Show?",
+            JOptionPane.YES_NO_OPTION // a simple yes or no option
+        );
+        
+        if (choice == JOptionPane.YES_OPTION) { // if its a no show, then the patient is added to the no show list
+            Patient.markNoShow(next); // Mark as no-show
+            JOptionPane.showMessageDialog(this, next.getName() + " marked as no-show.");
+        } else { // else, confirms with the processing
+            JOptionPane.showMessageDialog(this, next.getName() + " has been processed.");
+        }
+
+        updateQueueTable(); // updating table to reflect the processing
+    }     
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -335,7 +358,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(gpList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(seperator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(noShowBTN)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -401,25 +424,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addBTNActionPerformed
 
     private void nextBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBTNActionPerformed
-        Patient next = Patient.getNextPatient(); //get next patient from queue
-        if (next == null) { // to check if the queue is empty
-            JOptionPane.showMessageDialog(this, "No patients in queue."); // if true then show it is empty
-        }
-        
-        int choice = JOptionPane.showConfirmDialog(this, // ask the user if they want to either confirm processing or mark the patient as a no show
-            "Now Processing: " + next.getName() + "\nPriority: " + next.getPriority() + "\nGP: " + next.getAssignedGP() + "\n\nMark as No-Show?",
-            "Confirm or No-Show?",
-            JOptionPane.YES_NO_OPTION // a simple yes or no option
-        );
-        
-        if (choice == JOptionPane.YES_OPTION) { // if its a no show, then the patient is added to the no show list
-            Patient.markNoShow(next); // Mark as no-show
-            JOptionPane.showMessageDialog(this, next.getName() + " marked as no-show.");
-        } else { // else, confirms with the processing
-            JOptionPane.showMessageDialog(this, next.getName() + " has been processed.");
-        }
-
-        updateQueueTable(); // updating table to reflect the processing
+        processNextPatient();
     }//GEN-LAST:event_nextBTNActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
