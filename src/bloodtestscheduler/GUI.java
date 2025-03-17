@@ -53,20 +53,28 @@ public class GUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, gpDetails, "GP Details", JOptionPane.INFORMATION_MESSAGE);
     }
     
-    private void processNextPatient() {
+    private void processNextPatient() { // this was initially not a recurrsive, but was in the nextBTN function
         Patient next = Patient.getNextPatient(); //get next patient from queue
-        
+
         if (next == null) { // to check if the queue is empty
             JOptionPane.showMessageDialog(this, "No patients in queue."); // if true then show it is empty
+            return; // exit function
         }
-        
-        int choice = JOptionPane.showConfirmDialog(this, // ask the user if they want to either confirm processing or mark the patient as a no show
-            "Now Processing: " + next.getName() + "\nPriority: " + next.getPriority() + "\nGP: " + next.getAssignedGP() + "\n\nMark as No-Show?",
-            "Confirm or No-Show?",
-            JOptionPane.YES_NO_OPTION // a simple yes or no option
+
+        // ask the user if they want to either confirm processing or mark the patient as a no show
+        String[] options = {"Mark No-Show", "Process Patient"}; // initially i had this as a yes or no dialog box, but i've changed to make the processing easy and clear
+        int choice = JOptionPane.showOptionDialog(
+            this,
+            "Name: " + next.getName() + "\nAge: " + next.getAge() + ";" + " Priority: " + next.getPriority() + "\nGP: " + next.getAssignedGP(),
+            "Now Processing", // displays the necessary details on processing
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            options,
+            options[1] // Default selected button is "Process Patient", as when enter is clicked, they are automatically marked as processed
         );
-        
-        if (choice == JOptionPane.YES_OPTION) { // if its a no show, then the patient is added to the no show list
+
+        if (choice == 0) { // if its a no show, then the patient is added to the no show list
             Patient.markNoShow(next); // Mark as no-show
             JOptionPane.showMessageDialog(this, next.getName() + " marked as no-show.");
         } else { // else, confirms with the processing
@@ -74,7 +82,7 @@ public class GUI extends javax.swing.JFrame {
         }
 
         updateQueueTable(); // updating table to reflect the processing
-    }     
+    }    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -210,10 +218,7 @@ public class GUI extends javax.swing.JFrame {
 
         queueTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Name", "Gender", "Age", "Priority", "Hospital", "GP Assigned"
@@ -223,7 +228,7 @@ public class GUI extends javax.swing.JFrame {
 
         GPLabel.setText("Assign GP:");
 
-        gpList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- None -", "Dr. Smith", "Dr. Johnson", "Dr.Lee", "Dr.Patel", "Dr.Adams" }));
+        gpList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- None -", "Dr. Smith (Cardiology)", "Dr. Johnson (Neurology)", "Dr.Lee (Pediatrics)", "Dr.Patel (General Practice)", "Dr.Adams (Orthopedics)" }));
 
         quitBTN.setText("Quit");
         quitBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -303,7 +308,7 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(GPLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gpList, 0, 176, Short.MAX_VALUE)))
+                                .addComponent(gpList, 0, 1, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
