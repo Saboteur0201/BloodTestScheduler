@@ -123,27 +123,21 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="patientCheckLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="patientCheck" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="priorityLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="priorityList" max="32767" attributes="0"/>
-                                          <Component id="genderList" pref="144" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                      <Component id="patientCheckLabel" min="-2" pref="113" max="-2" attributes="0"/>
-                                  </Group>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="priorityLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="priorityList" max="32767" attributes="0"/>
+                                  <Component id="genderList" pref="144" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -272,7 +266,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="patientCheckLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hospital Patient?"/>
+        <Property name="text" type="java.lang.String" value="From a Hospital Ward?"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="patientCheck">
@@ -425,7 +419,7 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value="-Select -"/>
+            <StringItem index="0" value="- Select -"/>
             <StringItem index="1" value="Male"/>
             <StringItem index="2" value="Female"/>
             <StringItem index="3" value="Other"/>

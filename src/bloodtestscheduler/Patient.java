@@ -65,7 +65,7 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
                 return 1;
                 
             default: 
-                return 0; // should not happen, but if the field is empty then this would be returned
+                return 0; // should not happen, but if the field is empty then this would be returned and gives this patient the last preference
         }
     }
 

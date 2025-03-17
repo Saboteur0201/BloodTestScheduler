@@ -183,7 +183,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        patientCheckLabel.setText("Hospital Patient?");
+        patientCheckLabel.setText("From a Hospital Ward?");
 
         patientCheck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,7 +246,7 @@ public class GUI extends javax.swing.JFrame {
 
         genderLabel.setText("Gender:");
 
-        genderList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Select -", "Male", "Female", "Other" }));
+        genderList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select -", "Male", "Female", "Other" }));
         genderList.setToolTipText("");
         genderList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,22 +311,19 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(gpList, 0, 1, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(patientCheckLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(patientCheck))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(43, 43, 43)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(priorityLabel)
-                                            .addComponent(genderLabel))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(priorityList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(genderList, 0, 144, Short.MAX_VALUE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(46, 46, 46)
-                                        .addComponent(patientCheckLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(priorityLabel)
+                                    .addComponent(genderLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(priorityList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(genderList, 0, 144, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(44, 44, 44))
         );
@@ -399,10 +396,13 @@ public class GUI extends javax.swing.JFrame {
         boolean fromHospital = patientCheck.isSelected(); // checkbox status
         String assignedGP = (String) gpList.getSelectedItem(); // retreives the assigned GP
         
-        // checks if name field is empty,
+        // checks if name field is empt
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a name.");
             return;
+        }
+        if (genderList.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this, "Please select a gender (Male, Female or Other)");
         }
         
         int age; // gets the age from input field
@@ -414,7 +414,13 @@ public class GUI extends javax.swing.JFrame {
         }       
         
         for (Patient p : Patient.queue) { // looping throught the queue to check if this patient exists or not
-            if (p.getName().equalsIgnoreCase(name)) { // ignoring the case for better comparision
+            if (p.getName().equalsIgnoreCase(name) && 
+            p.getAge() == age && 
+            p.getGender().equalsIgnoreCase(gender) &&
+            p.getPriority().equalsIgnoreCase(priority) &&
+            p.isFromHospital() == fromHospital &&
+            p.getAssignedGP().equalsIgnoreCase(assignedGP)){ // now it checks if all elements are same, earlier it only checks for name and now the chances of having a patient with all these fields same is highly unlikely
+                
                 JOptionPane.showMessageDialog(this, "This patient is already in the queue.");
                 return;
             }
