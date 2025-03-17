@@ -394,27 +394,31 @@ public class GUI extends javax.swing.JFrame {
 
     private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
         String name = nameField.getText(); // retrieves the name from input field
-        int age; // gets the age from input field
+        String gender = (String) genderList.getSelectedItem(); // gets the gender of the person
+        String priority = (String) priorityList.getSelectedItem();// get priorty from dropdown
+        boolean fromHospital = patientCheck.isSelected(); // checkbox status
+        String assignedGP = (String) gpList.getSelectedItem(); // retreives the assigned GP
         
+        // checks if name field is empty,
+        if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a name.");
+            return;
+        }
+        
+        int age; // gets the age from input field
         try { // this checks if the age entered is valid 
             age = Integer.parseInt(ageField.getText()); // converting the age from a string to an integer
         } catch (NumberFormatException e) { // if the input is anything other than an integer/number
             JOptionPane.showMessageDialog(this, "Invalid age. Please enter a number.");
             return;
-        }
-        
+        }       
         
         for (Patient p : Patient.queue) { // looping throught the queue to check if this patient exists or not
             if (p.getName().equalsIgnoreCase(name)) { // ignoring the case for better comparision
                 JOptionPane.showMessageDialog(this, "This patient is already in the queue.");
                 return;
             }
-        }
-        
-        String gender = (String) genderList.getSelectedItem(); // gets the gender of the person
-        String priority = (String) priorityList.getSelectedItem();// get priorty from dropdown
-        boolean fromHospital = patientCheck.isSelected(); // checkbox status
-        String assignedGP = (String) gpList.getSelectedItem(); // retreives the assigned GP
+        }      
 
         Patient.addPatient(new Patient(fromHospital, name, age, priority, gender, assignedGP)); // creating the patient object and add them to the table
         updateQueueTable(); // refreshing the table to show the addition made, live
