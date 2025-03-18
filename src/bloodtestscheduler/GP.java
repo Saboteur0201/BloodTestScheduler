@@ -9,10 +9,10 @@ public class GP extends Person { // GP class extends Person
     
     private String specialization; // GP specialization
     private static GP[] gpList = {
-        new GP("Dr. Smith", 45, "Male", "Cardiology"),
-        new GP("Dr. Johnson", 50, "Female", "Neurology"),
-        new GP("Dr. Lee", 40, "Male", "Pediatrics"),
-        new GP("Dr. Patel", 38, "Female", "General Practice"),
+        new GP("Dr. Smith", 45, "Female", "Cardiology"),
+        new GP("Dr. Johnson", 50, "Male", "Neurology"),
+        new GP("Dr. Lee", 40, "Female", "Pediatrics"),
+        new GP("Dr. Patel", 38, "Male", "General Practice"),
         new GP("Dr. Adams", 42, "Male", "Orthopedics")        
     };
     

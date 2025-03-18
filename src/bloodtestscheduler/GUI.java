@@ -14,7 +14,7 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
     }
     
-    private void updateQueueTable() { // update table when changes are made
+    public void updateQueueTable() { // update table when changes are made
         javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) queueTable.getModel();
         model.setRowCount(0); // Clears table before adding new elements to avoid duplicates
         
@@ -29,9 +29,13 @@ public class GUI extends javax.swing.JFrame {
                     p.getAssignedGP()
                 });              
         }
+        
+        System.out.println("Table updated"); // terminal system confirmation
     }
     
-    private void showNoShowList() {
+    private void showNoShowList() { 
+        System.out.println("No show list loaded"); // terminal system confirmation
+
         String noShowText = "No-Show Patients:\n"; 
         
         if (Patient.noShowList.isEmpty()){
@@ -45,10 +49,12 @@ public class GUI extends javax.swing.JFrame {
             }
         }
         
-        JOptionPane.showMessageDialog(this, noShowText, "No-Show List", JOptionPane.INFORMATION_MESSAGE); // pop-up this message
+        JOptionPane.showMessageDialog(this, noShowText, "No-Show List", JOptionPane.INFORMATION_MESSAGE); // pop-up this message        
     }
     
     private void showGPDetails() { 
+        System.out.println("GP Details Loaded"); // terminal system confirmation
+
         GP[] gpList = GP.getGPList(); // Retrieve the GP list 
         String gpDetails = "List of General Practitioners:\n\n";
 
@@ -63,6 +69,7 @@ public class GUI extends javax.swing.JFrame {
 
         // Display all the above GP details in a pop-up pane
         JOptionPane.showMessageDialog(this, gpDetails, "GP Details", JOptionPane.INFORMATION_MESSAGE);
+        
     }
     
     private void processNextPatient() { // this was initially not a recurrsive, but was in the nextBTN function
@@ -89,9 +96,11 @@ public class GUI extends javax.swing.JFrame {
         if (choice == 0) { // if its a no show, then the patient is added to the no show list
             Patient.markNoShow(next); // Mark as no-show
             JOptionPane.showMessageDialog(this, next.getName() + " marked as no-show.");
+            System.out.println("No Show added"); // terminal system confirmation
         } else { // else, confirms with the processing and add them to the history list
             Patient.saveToHistory(next);
             JOptionPane.showMessageDialog(this, next.getName() + " has been processed.");
+            System.out.println("Processed"); // terminal system confirmation
         }
             
         updateQueueTable(); // updating table to reflect the processing
@@ -329,8 +338,8 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(gpList, 0, 1, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(nameLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -448,6 +457,7 @@ public class GUI extends javax.swing.JFrame {
 
         Patient.addPatient(new Patient(fromHospital, name, age, priority, gender, assignedGP)); // creating the patient object and add them to the table
         updateQueueTable(); // refreshing the table to show the addition made, live
+        System.out.println("Patient Added.");// terminal system confirmation
         
         // clear input fields after addition
         nameField.setText("");
@@ -476,12 +486,17 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_priorityListActionPerformed
 
     private void quitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitBTNActionPerformed
+        System.out.println("Quiting.....\n"); // terminal system confirmation
+        System.out.println("GoodBye!\n"); // terminal system confirmation
+        
         System.exit(0); // quit the app
     }//GEN-LAST:event_quitBTNActionPerformed
 
     private void clearBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBTNActionPerformed
-        Patient.queue.clear();
-        updateQueueTable(); // clear entire table, to restart or test purposes
+        Patient.queue.clear(); // clear entire table, to restart or test purposes
+        updateQueueTable(); // reflecting these changes
+        
+        System.out.println("Table Cleared"); // terminal system confirmation
     }//GEN-LAST:event_clearBTNActionPerformed
 
     private void genderListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderListActionPerformed
@@ -497,8 +512,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_helpBTNActionPerformed
 
     private void historyBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyBTNActionPerformed
+        System.out.println("History/Log loaded"); // terminal system confirmation
+        
         String history = Patient.getPatientHistory(); // this is to retreive the patient history from the list 
-
         
         if (history.equals("No patient history available.")) { // If there is no history found then display an alert
             JOptionPane.showMessageDialog(this, history, "Patient History", JOptionPane.INFORMATION_MESSAGE);
@@ -520,6 +536,8 @@ public class GUI extends javax.swing.JFrame {
         if (choice == 0) { // clear the queue if the user chooses to
             Patient.clearPatientHistory(); 
             JOptionPane.showMessageDialog(this, "All patient history has been cleared.");
+            
+            System.out.println("History cleared"); // terminal system confirmation
         }
     }//GEN-LAST:event_historyBTNActionPerformed
 

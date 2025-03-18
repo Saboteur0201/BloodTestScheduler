@@ -13,11 +13,11 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
     
     private boolean fromHospital; // check if patient is from hospital
     private String assignedGP; // assigned GP to patient
-    private String priority;
+    private String priority; // assigning a patient their priority
    
     public static PriorityQueue<Patient> queue = new PriorityQueue<>(); // used a priority queue to store all patients and sorted by urgency and age
     public static Queue<Patient> noShowList = new LinkedList<>();  // Changed from Stack to Queue to maintain FIFO order
-    private static Queue<String> patientHistory = new LinkedList<>(); // Stores processed patient history in FIFO order
+    private static Queue<String> patientHistory = new LinkedList<>(); // Stores processed patient history, using the same FIFO method
     
     public Patient(boolean fromHospital, String name, int age, String priority,String gender, String assignedGP) {
         super(name, age, gender);
@@ -89,7 +89,7 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
 
     public static void markNoShow(Patient p) {
         if (noShowList.size() >= 5) {
-            noShowList.poll(); // remove the **oldest** no-show patient (FIFO order)
+            noShowList.poll(); // remove the oldest no-show patient (FIFO order)
         }
         noShowList.add(p); // Add the new no-show patient at the end
     }
@@ -107,7 +107,7 @@ public class Patient extends Person implements Comparable<Patient> { // Automati
 
         StringBuilder historyText = new StringBuilder("Patient History:\n\n");
         for (String patientDetails : patientHistory) {
-            historyText.append(patientDetails).append("\n----------------------\n");
+            historyText.append(patientDetails).append("\n--------------------------------------------\n");
         }
         return historyText.toString();
     }

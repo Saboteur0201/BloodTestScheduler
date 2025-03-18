@@ -114,8 +114,8 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="nameField" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="nameField" min="-2" pref="156" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>

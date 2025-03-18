@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 public class Help {
     
     public static void showHelp() { // This makes it easy for anyone using this app to understand how it works
+        System.out.println("Help menu loaded"); // terminal system confirmation
+        
         String helpMessage = "Blood Test Scheduler Help\n\n"
                 + "Adding Patients:\n"
                 + "1. Enter the patient's Name, Age, and Gender.\n"
