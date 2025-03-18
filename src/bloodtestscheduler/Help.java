@@ -22,6 +22,16 @@ public class Help {
                 + "- Click 'Process Next' to show the highest priority/next up patient.\n"
                 + "- If a patient is not present, mark them as a No-Show (Yes).\n\n"
                 
+                + "No-Show List:\n"
+                + "- Click 'No-Shows' to see the list of patients who are marked as absent or no show.\n"
+                + "- The last no-show patient will be shown first.\n"
+                + "- Only the last five no-show patients are stored.\n\n"
+
+                + "Patient Log:\n"
+                + "- Click 'Patients Log' to view the history of all processed patients.\n"
+                + "- The log follows the first in, first out method, so older(very first) records appear first.\n"
+                + "- The log can be cleared if needed, with an option to 'Clear All' or simply 'Close' the window.\n\n"
+
                 + "Additional Features:\n"
                 + "- Click 'Show GP Details' to view all doctors.\n"
                 + "- Click 'Clear Patient Queue' to remove all patients.\n"
